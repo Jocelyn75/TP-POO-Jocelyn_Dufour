@@ -82,14 +82,11 @@ class Challenger
     {
         return $this->_strength;
     }
-
-
-
 }
 
-$ippo = new Challenger("Challenger", 19575, 95, 1835);
-echo $ippo->getName() . "\n";
-echo $ippo->getStamina() . "\n";
-echo $ippo->getSpeed() . "\n";
-echo $ippo->getStrength() . "\n";
+$challenger = new Challenger("Challenger", 19575, 95, 1835);
+echo $challenger->getName() . "\n";
+echo $challenger->getStamina() . "\n";
+echo $challenger->getSpeed() . "\n";
+echo $challenger->getStrength() . "\n";
 ?>
