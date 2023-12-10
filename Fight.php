@@ -14,10 +14,13 @@ class Fight
                 {
                     return $challenger->getStamina() - $ippo->getStrength();
                 }
+            else 
+            {
+                return $ippo->getStamina() - $challenger->getStrength();
+            }
         }
     }
 }
-
 
 $fight = new Fight;
 echo $fight->fighting($ippo, $challenger);
