@@ -12,18 +12,17 @@ class Fight
         {
             if($ippo->getSpeed() > $challenger->getSpeed())
                 {
-                    return $challenger->getStamina() - $ippo->getStrength();
+                    $result = $challenger->getStamina() - $ippo->getStrength();
                 }
             else 
             {
-                return $ippo->getStamina() - $challenger->getStrength();
+                $result = $ippo->getStamina() - $challenger->getStrength();
             }
         }
+        return $result;
     }
 }
-
 $fight = new Fight;
 echo $fight->fighting($ippo, $challenger);
-
 
 ?>

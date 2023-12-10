@@ -84,7 +84,7 @@ class Challenger
     }
 }
 
-$challenger = new Challenger("Challenger", 19575, 95, 1835);
+$challenger = new Challenger("Challenger", 19575, 85, 1835);
 echo $challenger->getName() . "\n";
 echo $challenger->getStamina() . "\n";
 echo $challenger->getSpeed() . "\n";
