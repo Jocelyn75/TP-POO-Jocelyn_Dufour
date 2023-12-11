@@ -7,19 +7,33 @@ class Fight
 {
     public function fighting($ippo, $challenger)
     {
-        $i=0;
-        for($i=0; $i<10; $i++)
+        $ippoStamina = $ippo->getStamina();
+        $challengerStamina = $challenger->getStamina();
+        for($i=0; $i<15; $i++)
         {
             if($ippo->getSpeed() > $challenger->getSpeed())
                 {
-                    $result = $challenger->getStamina() - $ippo->getStrength();
+                    $challengerStamina = $challengerStamina - $ippo->getStrength();
+                    echo "Points de vie restants d'Ippo : $ippoStamina \n Points de vie restants de Challenger : $challengerStamina \n";
+                    if($ippo->getSpeed() > $challenger->getSpeed())
+                    {
+                        $ippoStamina = $ippoStamina - $challenger->getStrength();
+                        echo "Points de vie restants d'Ippo : $ippoStamina \n Points de vie restants de Challenger : $challengerStamina";
+                        if($ippoStamina < 0 || $challengerStamina < 0 )
+                        {
+                            return "Le combat est terminé";
+                        }
+                    }
+                    else
+                    {
+                        $ippoStamina = $ippo->getStamina() - $challenger->getStrength();
+                    }
                 }
-            else 
-            {
-                $result = $ippo->getStamina() - $challenger->getStrength();
-            }
+            else
+                {
+                $ippoStamina = $ippo->getStamina() - $challenger->getStrength();
+                }
         }
-        return $result;
     }
 }
 $fight = new Fight;
