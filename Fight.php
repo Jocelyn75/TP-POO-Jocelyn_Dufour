@@ -5,11 +5,7 @@ require_once "Challenger.php";
 
 class Fight
 {
-    public function coupCritique()
-    {
-    rand(1,2);
-    }
-    public function fighting($ippo, $challenger)
+    public function fighting(Ippo $ippo, Challenger $challenger) // Ici, Ippo et Challenger indiquent que l'on ne peut mettre en paramètre qu'un objet issu de la classe Ippo/Challenger. C'est une "injection par indépendance". 
     {
         $ippoStamina = $ippo->getStamina();
         $challengerStamina = $challenger->getStamina();
@@ -17,27 +13,27 @@ class Fight
         for($i=0; $i<10; $i++)
         {    
             if($ippo->getSpeed() > $challenger->getSpeed())
-                {   
-                    $challengerStamina = $challengerStamina - $ippo->getStrength();
-                    echo "Points de vie restants de Challenger : $challengerStamina \n";
+                
+            $challengerStamina = $challengerStamina - $ippo->getStrength();
+            echo "Points de vie restants de Challenger : $challengerStamina \n";
 
-                    if($ippoStamina < 0 )
-                        {
-                            return "Le combat est terminé, Challenger a gagné";
-                        }
-                    if($challengerStamina < 0)
-                        {
-                            return "Le combat est terminé, Ippo a gagné";
-                        }
-                    else
-                    {
-                        $ippoStamina = $ippoStamina - $challenger->getStrength();
-                        echo "Points de vie restants d'Ippo : $ippoStamina \n";
-                    }
+            if($ippoStamina < 0 )
+                {
+                    return "Le combat est terminé, Challenger a gagné";
                 }
+            if($challengerStamina < 0)
+                {
+                    return "Le combat est terminé, Ippo a gagné";
+                }
+            else
+            {
+                $ippoStamina = $ippoStamina - $challenger->getStrength();
+                echo "Points de vie restants d'Ippo : $ippoStamina \n";
+            }
         }
     }
 }
+
 $fight = new Fight;
 echo $fight->fighting($ippo, $challenger);
 
